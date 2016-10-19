@@ -12,6 +12,11 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 	 */
 	protected $meta;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param string $post_type Post type slug.
+	 */
 	public function __construct( $post_type ) {
 		$this->post_type = $post_type;
 		$this->namespace = 'wp/v2';
@@ -1932,10 +1937,10 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 	/**
 	 * Validate whether the user can query private statuses
 	 *
-	 * @param  mixed $value
-	 * @param  WP_REST_Request $request
-	 * @param  string $parameter
-	 * @return WP_Error|boolean
+	 * @param  mixed           $value     Status value.
+	 * @param  WP_REST_Request $request   Request object.
+	 * @param  string          $parameter Additional parameter to pass to validation.
+	 * @return WP_Error|boolean Boolean true if the user may query, WP_Error if not.
 	 */
 	public function validate_user_can_query_private_statuses( $value, $request, $parameter ) {
 		if ( 'publish' === $value ) {
