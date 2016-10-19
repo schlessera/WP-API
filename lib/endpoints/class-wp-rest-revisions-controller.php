@@ -6,6 +6,11 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	private $parent_controller;
 	private $parent_base;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param string $parent_post_type Parent post type slug.
+	 */
 	public function __construct( $parent_post_type ) {
 		$this->parent_post_type = $parent_post_type;
 		$this->parent_controller = new WP_REST_Posts_Controller( $parent_post_type );
